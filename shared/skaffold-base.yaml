@@ -1,0 +1,16 @@
+apiVersion: skaffold/v3
+kind: Config
+metadata:
+  name: {{SERVICE_NAME}}
+build:
+  artifacts:
+    - image: {{IMAGE_NAME}}
+      context: .
+      docker:
+        dockerfile: Dockerfile
+  googleCloudBuild:
+    projectId: {{PROJECT_ID}}
+deploy:
+  cloudrun:
+    projectId: {{PROJECT_ID}}
+    region: {{REGION}}

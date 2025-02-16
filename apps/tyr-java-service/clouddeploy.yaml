@@ -1,0 +1,22 @@
+apiVersion: deploy.cloud.google.com/v1
+kind: DeliveryPipeline
+metadata:
+  name: tyr-java-service-pipeline
+description: Pipeline for tyr-java-service
+serialPipeline:
+  stages:
+    - targetId: dev
+      profiles: ["dev"]
+      strategy:
+        standard:
+          verify: false  #      
+    - targetId: qa
+      profiles: ["qa"]
+      strategy:
+        standard:
+          verify: true      
+    - targetId: prod
+      profiles: ["prod"]
+      strategy:
+        standard:
+          verify: true

@@ -1,0 +1,26 @@
+apiVersion: skaffold/v3
+kind: Config
+metadata:
+  name: tyr-java-service
+requires:
+  - path: ../shared/templates/skaffold-base.yaml
+    configs: ["base"]
+build:
+  artifacts:
+    - image: us-central1-docker.pkg.dev/platform-tyrconsulting/applications/tyr-java-service
+profiles:
+  - name: dev
+    deploy:
+      cloudrun:
+        projectId: dev-services-tyrconsulting
+        region: us-central1
+  - name: stage
+    deploy:
+      cloudrun:
+        projectId: stage-services-tyrconsulting
+        region: us-central1
+  - name: prod
+    deploy:
+      cloudrun:
+        projectId: prod-services-tyrconsulting
+        region: us-central1
