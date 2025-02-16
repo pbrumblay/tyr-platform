@@ -13,17 +13,11 @@ resource "google_secret_manager_secret_version" "github_token_secret_version" {
     secret_data = var.github_pat
 }
 
-data "google_iam_policy" "serviceagent_secretAccessor" {
-    binding {
-        role = "roles/secretmanager.secretAccessor"
-        members = ["serviceAccount:service-${data.google_project.platform_project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"]
-    }
-}
-
-resource "google_secret_manager_secret_iam_policy" "policy" {
+resource "google_secret_manager_secret_iam_member" "builder_github_pat_access" {
   project = google_secret_manager_secret.github_token_secret.project
   secret_id = google_secret_manager_secret.github_token_secret.secret_id
-  policy_data = data.google_iam_policy.serviceagent_secretAccessor.policy_data
+  role = "roles/secretmanager.secretAccessor"
+  member = "serviceAccount:${google_service_account.cloudbuild_service_account.email}"
 }
 
 // Create the GitHub connection
@@ -38,5 +32,4 @@ resource "google_cloudbuildv2_connection" "github_connection" {
             oauth_token_secret_version = google_secret_manager_secret_version.github_token_secret_version.id
         }
     }
-    depends_on = [google_secret_manager_secret_iam_policy.policy]
 }
