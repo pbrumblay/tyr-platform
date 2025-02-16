@@ -3,7 +3,7 @@ kind: Config
 metadata:
   name: tyr-java-service
 requires:
-  - path: ../shared/templates/skaffold-base.yaml
+  - path: ../../shared/skaffold-base.yaml
     configs: ["base"]
 build:
   artifacts:
