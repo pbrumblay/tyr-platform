@@ -2,9 +2,6 @@ apiVersion: skaffold/v3
 kind: Config
 metadata:
   name: tyr-java-service
-requires:
-  - path: ../../shared/skaffold-base.yaml
-    configs: ["base"]
 build:
   artifacts:
     - image: tyr-java-service
