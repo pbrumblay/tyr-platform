@@ -5,6 +5,9 @@ metadata:
 build:
   artifacts:
     - image: tyr-java-service
+manifests:
+  rawYaml:
+    - manifest.yaml
 profiles:
   - name: dev
     deploy:

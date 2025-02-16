@@ -1,9 +1,9 @@
 provider "google" {
-  project     = "dev-tyrconsulting"
+  project     = "dev-services-tyrconsulting"
   region      = "us-central1"
 }
 
 provider "google-beta" {
-  project     = "dev-tyrconsulting"
+  project     = "dev-services-tyrconsulting"
   region      = "us-central1"
 }

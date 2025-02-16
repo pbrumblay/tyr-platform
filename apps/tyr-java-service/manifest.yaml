@@ -1,0 +1,10 @@
+# stable/manifest.yaml
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: tyr-java-service
+spec:
+  template:
+    spec:
+      containers:
+        - image: us-central1-docker.pkg.dev/platform-tyrconsulting/applications/tyr-java-service  # Skaffold will inject the correct tag
