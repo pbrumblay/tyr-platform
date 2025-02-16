@@ -12,5 +12,5 @@ build:
     projectId: {{PROJECT_ID}}
 deploy:
   cloudrun:
-    projectId: {{PROJECT_ID}}
+    projectid: {{PROJECT_ID}}
     region: {{REGION}}

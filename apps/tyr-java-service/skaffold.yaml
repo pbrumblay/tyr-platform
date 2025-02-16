@@ -12,15 +12,15 @@ profiles:
   - name: dev
     deploy:
       cloudrun:
-        projectId: dev-services-tyrconsulting
+        projectid: dev-services-tyrconsulting
         region: us-central1
   - name: stage
     deploy:
       cloudrun:
-        projectId: stage-services-tyrconsulting
+        projectid: stage-services-tyrconsulting
         region: us-central1
   - name: prod
     deploy:
       cloudrun:
-        projectId: prod-services-tyrconsulting
+        projectid: prod-services-tyrconsulting
         region: us-central1
