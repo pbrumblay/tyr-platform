@@ -7,7 +7,7 @@ requires:
     configs: ["base"]
 build:
   artifacts:
-    - image: us-central1-docker.pkg.dev/platform-tyrconsulting/applications/tyr-java-service
+    - image: tyr-java-service
 profiles:
   - name: dev
     deploy:
