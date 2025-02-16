@@ -11,16 +11,13 @@ profiles:
       cloudrun:
         projectid: dev-services-tyrconsulting
         region: us-central1
-        service: tyr-java-service
   - name: stage
     deploy:
       cloudrun:
         projectid: stage-services-tyrconsulting
         region: us-central1
-        service: tyr-java-service
   - name: prod
     deploy:
       cloudrun:
         projectid: prod-services-tyrconsulting
         region: us-central1
-        service: tyr-java-service
