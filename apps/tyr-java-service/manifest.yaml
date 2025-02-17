@@ -1,8 +1,9 @@
-# stable/manifest.yaml
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   name: tyr-java-service
+  annotations:
+    run.googleapis.com/ingress: internal-and-cloud-load-balancing  
 spec:
   template:
     spec:
