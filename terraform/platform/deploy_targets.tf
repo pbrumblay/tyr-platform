@@ -3,6 +3,7 @@ resource "google_clouddeploy_target" "dev" {
   location = var.region
   name     = "java-service-dev"
   project  = var.platform_project_id
+  require_approval = false
 
   execution_configs {
     usages            = ["RENDER", "DEPLOY"]
@@ -19,6 +20,7 @@ resource "google_clouddeploy_target" "stage" {
   location = var.region
   name     = "java-service-stage"
   project  = var.platform_project_id
+  require_approval = true
 
   execution_configs {
     usages            = ["RENDER", "DEPLOY"]
@@ -35,6 +37,7 @@ resource "google_clouddeploy_target" "prod" {
   location = var.region
   name     = "java-service-prod"
   project  = var.platform_project_id
+  require_approval = true
 
   execution_configs {
     usages            = ["RENDER", "DEPLOY"]
