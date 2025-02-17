@@ -6,6 +6,10 @@ resource "google_project_service" "project_services" {
   disable_dependent_services = false
 }
 
+data "google_project" "dev_project" {
+  project_id = var.dev_project_id
+}
+
 terraform {
   backend "gcs" {}
 }

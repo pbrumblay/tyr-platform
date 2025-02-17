@@ -79,15 +79,6 @@ resource "google_project_iam_member" "clouddeploy_sa_dev_roles" {
   member  = "serviceAccount:${google_service_account.clouddeploy_sa.email}"
 }
 
-# Grant Cloud Deploy SA the ability to impersonate Cloud Run service accounts
-resource "google_service_account_iam_member" "clouddeploy_actas_cloudrun" {
-  provider = google-beta
-  for_each = local.project_impersonation_grants
-  service_account_id = "projects/${each.key}/serviceAccounts/tyr-java-service-sa@${each.key}.iam.gserviceaccount.com"
-  role               = "roles/iam.serviceAccountUser"
-  member             = "serviceAccount:${google_service_account.clouddeploy_sa.email}"
-}
-
 resource "google_project_iam_member" "clouddeploy_sa_stage_roles" {
   provider     = google-beta
   for_each = local.project_deploy_roles
@@ -104,3 +95,11 @@ resource "google_project_iam_member" "clouddeploy_sa_prod_roles" {
   member  = "serviceAccount:${google_service_account.clouddeploy_sa.email}"
 }
 
+# Grant Cloud Deploy SA the ability to impersonate Cloud Run service accounts
+resource "google_service_account_iam_member" "clouddeploy_actas_cloudrun" {
+  provider = google-beta
+  for_each = local.project_impersonation_grants
+  service_account_id = "projects/${each.key}/serviceAccounts/tyr-java-service-sa@${each.key}.iam.gserviceaccount.com"
+  role               = "roles/iam.serviceAccountUser"
+  member             = "serviceAccount:${google_service_account.clouddeploy_sa.email}"
+}

@@ -19,3 +19,9 @@ resource "google_project_iam_member" "tyr_java_service_sa_role_bindings" {
   role    = each.key
   member  = "serviceAccount:${google_service_account.tyr_java_service_sa.email}"
 }
+
+resource "google_project_iam_member" "cloudrun_sa_artifact_registry_reader" {
+  project = var.platform_project_id
+  role    = "roles/artifactregistry.reader"
+  member  = "serviceAccount:service-${data.google_project.stage_project.number}@serverless-robot-prod.iam.gserviceaccount.com"
+}
