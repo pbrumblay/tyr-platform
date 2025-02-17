@@ -35,15 +35,6 @@ resource "google_service_account_iam_member" "cloudbuild_actas_clouddeploy" {
   member             = "serviceAccount:${google_service_account.cloudbuild_service_account.email}"
 }
 
-# Grant builder access to gradle cache bucket.
-resource "google_storage_bucket_iam_binding" "gradle_cache_user" {
-  bucket = google_storage_bucket.gradle_cache.name
-  role   = "roles/storage.objectAdmin"  # Provides full access to objects in the bucket
-  members = [
-    "serviceAccount:${google_service_account.cloudbuild_service_account.email}"
-  ]
-}
-
 # Create Cloud Build trigger for deployment updates
 resource "google_cloudbuild_trigger" "tyr_java_service" {
   name        = "tyr-java-service"
