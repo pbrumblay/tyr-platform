@@ -46,7 +46,7 @@ resource "google_cloudbuild_trigger" "tyr_java_service" {
   repository_event_config {
     repository = google_cloudbuildv2_repository.tyr_java_service_repo.id
     push {
-      branch = "^main$"
+      branch = "^(main|hotfix/.*)$"
     }
   }
 
