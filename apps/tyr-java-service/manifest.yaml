@@ -8,4 +8,4 @@ spec:
     spec:
       containers:
         - image: us-central1-docker.pkg.dev/platform-tyrconsulting/applications/tyr-java-service  # Skaffold will inject the correct tag
-      serviceAccountName: # from-param: tyr-java-service-sa@${project_id}.iam.gserviceaccount.com
+      serviceAccountName: will-be-replaced # from-param: tyr-java-service-sa@${project_id}.iam.gserviceaccount.com
